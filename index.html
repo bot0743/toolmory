@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Toolmory — аренда строительного и климатического инструмента</title>
+  <meta name="description" content="Скоро запуск сервиса аренды профессионального инструмента Toolmory. Перфораторы, осушители, генераторы — всё для стройки и дома. Бронируйте онлайн с доставкой.">
+  <meta name="keywords" content="аренда инструмента, строительный инструмент, климатическое оборудование, прокат инструмента, Toolmory">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Toolmory — аренда инструмента">
+  <meta property="og:description" content="Скоро запуск. Будьте в курсе — подпишитесь на новости.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolmory.ru">
+  <meta property="og:image" content="https://toolmory.ru/og-image.jpg"> <!-- замените позже на свою картинку -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0B1120 0%, #19233C 100%);
+      color: #E2E8F0;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 720px;
+      width: 100%;
+      background: rgba(15, 25, 45, 0.75);
+      backdrop-filter: blur(8px);
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFB347, #FF8C00);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 1.5rem 0 1rem;
+      line-height: 1.2;
+    }
+
+    .badge {
+      background: rgba(255, 140, 0, 0.2);
+      color: #FFB347;
+      padding: 0.3rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: #CBD5E1;
+      margin-bottom: 2rem;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .feature {
+      background: rgba(255,255,255,0.05);
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .feature::before {
+      content: "✓";
+      color: #FFB347;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 60px;
+      font-size: 1rem;
+      color: white;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #FFB347;
+      background: rgba(255,255,255,0.1);
+    }
+
+    button {
+      background: linear-gradient(95deg, #FF8C00, #FFB347);
+      border: none;
+      padding: 1rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0B1120;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(255, 140, 0, 0.4);
+    }
+
+    .message {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 0.5rem;
+      border-radius: 60px;
+      display: none;
+    }
+
+    .message.success {
+      background: rgba(46, 204, 113, 0.2);
+      color: #2ecc71;
+      display: block;
+    }
+
+    .message.error {
+      background: rgba(231, 76, 60, 0.2);
+      color: #e74c3c;
+      display: block;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #94A3B8;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #FFB347;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 1rem;
+      }
+      .container {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="logo">TOOLMORY</span>
+    <div class="badge">Скоро открытие</div>
+    <h1>Аренда инструмента,<br> которая работает на вас</h1>
+    <p class="description">
+      Перфораторы, осушители, генераторы, тепловые пушки — весь профессиональный инструмент для стройки, ремонта и дома.  
+      Бронируйте онлайн, получайте с доставкой или забирайте сами.  
+      <strong>Запускаемся в ближайшие дни.</strong>
+    </p>
+
+    <div class="feature-list">
+      <span class="feature">Доставка по городу</span>
+      <span class="feature">Честные цены</span>
+      <span class="feature">Чистый инструмент</span>
+      <span class="feature">Онлайн-бронирование</span>
+    </div>
+
+    <!-- Форма подписки через Formspree (бесплатно, нужно заменить action на свой) -->
+    <form id="subscribe-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Ваш e-mail" required>
+      </div>
+      <button type="submit">Сообщить о запуске →</button>
+      <div id="form-message" class="message"></div>
+    </form>
+
+    <div class="footer">
+      <div class="social-links">
+        <a href="#" target="_blank">Telegram</a>
+        <a href="#" target="_blank">ВКонтакте</a>
+        <a href="#" target="_blank">WhatsApp</a>
+      </div>
+      <p>© 2025 Toolmory. Все права защищены.</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('subscribe-form');
+    const messageDiv = document.getElementById('form-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      messageDiv.style.display = 'none';
+      messageDiv.className = 'message';
+
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          messageDiv.textContent = 'Спасибо! Мы сообщим вам о запуске первыми.';
+          messageDiv.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error('Ошибка отправки');
+        }
+      } catch (err) {
+        messageDiv.textContent = 'Что-то пошло не так. Попробуйте позже или свяжитесь с нами напрямую.';
+        messageDiv.classList.add('error');
+      } finally {
+        messageDiv.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
